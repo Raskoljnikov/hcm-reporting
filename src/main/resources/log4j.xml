@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "tld/log4j.dtd">  
+<log4j:configuration debug="false" xmlns:log4j="http://jakarta.apache.org/log4j/">
+	<appender class="org.apache.log4j.RollingFileAppender" name="File">
+		<param name="File" value="${catalina.home}/logs/hcm.log" />
+		<param name="MaxFileSize" value="10MB" />
+		<param name="MaxBackupIndex" value="5" />
+		<param name="Threshold" value="ERROR" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %-5p %c [%t] - %m%n" />
+		</layout>
+	</appender>
+	<appender class="org.apache.log4j.ConsoleAppender" name="Console">
+		<param name="Threshold" value="TRACE" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %-5p %c [%t] - %m%n" />
+		</layout>
+	</appender>
+	<logger name="org.springframework">
+        <level value="WARN"/>
+    </logger>
+    
+    <logger name="org.springframework.security">
+	    <level value="WARN" />
+	</logger>
+    
+	<root>
+		<level value="ERROR" />
+		<appender-ref ref="File" />
+		<appender-ref ref="Console" />
+	</root>
+</log4j:configuration>
